@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ExpirySmart™ — Retail Waste Intelligence</title>
+<meta name="description" content="ExpirySmart™ is a POS-first retail waste-intelligence and loyalty platform for supermarkets — an initiative of Circlio Technologies Limited.">
+<style>
+  :root{
+    --dark:#0B2E33; --dark-alt:#0F3B41; --primary:#028090; --secondary:#00A896; --accent:#02C39A;
+    --ink:#0E1B1F; --muted:#5C7378; --card:#F3F8F8; --line:rgba(255,255,255,0.12);
+    --serif: Cambria, Georgia, "Times New Roman", serif;
+    --sans: Calibri, "Segoe UI", system-ui, -apple-system, sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--dark); color:#EAF3F2; font-family:var(--sans); line-height:1.55;}
+  a{color:inherit;} button{font-family:inherit;}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+  .wrap{max-width:1140px; margin:0 auto; padding:0 28px;}
+
+  .eyebrow-bar{padding:18px 0; border-bottom:1px solid var(--line);}
+  .eyebrow-bar .wrap{display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;}
+  .eyebrow{font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--accent); font-weight:700;}
+  .eyebrow-bar .back{font-size:12px; color:#9FC4C6; text-decoration:none;}
+  .eyebrow-bar .back:hover{color:var(--accent);}
+
+  .hero{padding:90px 0 70px; position:relative; overflow:hidden;}
+  .amb{position:absolute; border-radius:50%; z-index:0; pointer-events:none;}
+  .amb-1{width:480px; height:480px; right:-200px; top:-220px; background:var(--dark-alt);}
+  .hero .wrap{position:relative; z-index:1;}
+  .hero h1{font-family:var(--serif); font-weight:700; font-size:clamp(34px,5.4vw,58px); line-height:1.06; color:#fff; margin-bottom:20px; max-width:760px;}
+  .hero h1 span{color:var(--accent);}
+  .hero .tagline{font-family:var(--serif); font-style:italic; font-size:clamp(16px,2vw,20px); color:#C9DEDF; margin-bottom:18px; max-width:560px;}
+  .hero .positioning{font-size:15px; color:#9FC4C6; max-width:540px; margin-bottom:32px;}
+  .hero .positioning strong{color:var(--accent); font-weight:600;}
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{display:inline-block; padding:13px 26px; border-radius:6px; font-size:14px; font-weight:600; text-decoration:none;}
+  .btn-primary{background:var(--accent); color:var(--dark);}
+  .btn-primary:hover{background:#0FE0AC;}
+  .btn-ghost{border:1px solid var(--line); color:#EAF3F2;}
+  .btn-ghost:hover{border-color:var(--accent); color:var(--accent);}
+
+  section{padding:80px 0;}
+  .loop-section{background:var(--dark-alt);}
+  .section-head{max-width:640px; margin-bottom:48px;}
+  .section-eyebrow{font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--secondary); font-weight:700; margin-bottom:12px;}
+  .section-title{font-family:var(--serif); font-weight:700; font-size:clamp(24px,3.2vw,34px); color:#fff; line-height:1.15;}
+  .section-sub{color:#9FC4C6; font-size:14.5px; margin-top:12px;}
+
+  .loop-track{display:flex; align-items:flex-start; justify-content:space-between; gap:8px; flex-wrap:wrap;}
+  .loop-step{flex:1 1 200px; min-width:180px; text-align:center;}
+  .loop-step .num{
+    width:52px; height:52px; border-radius:50%; background:var(--secondary); color:#fff;
+    font-family:var(--serif); font-weight:700; font-size:20px;
+    display:flex; align-items:center; justify-content:center; margin:0 auto 14px;
+  }
+  .loop-step:nth-child(4) .num{background:var(--accent);}
+  .loop-step .label{font-size:13.5px; font-weight:700; color:var(--accent); margin-bottom:6px;}
+  .loop-step .desc{font-size:12.5px; color:#B9D4D3; line-height:1.5;}
+  .loop-arrow{align-self:center; color:#5C8A8C; font-size:20px; padding-top:16px;}
+
+  .thesis-card{background:var(--dark-alt); border:1px solid var(--line); border-radius:14px; padding:48px clamp(24px,6vw,60px); text-align:center;}
+  .thesis-card p.q{font-family:var(--serif); font-weight:700; font-style:italic; font-size:clamp(20px,2.8vw,27px); color:#fff; line-height:1.3; max-width:760px; margin:0 auto 18px;}
+  .thesis-card p.a{color:#9FC4C6; font-size:14px; max-width:600px; margin:0 auto;}
+
+  .market-grid{display:flex; flex-wrap:wrap; gap:16px;}
+  .market-card{flex:1 1 240px; background:var(--card); color:var(--ink); border-radius:10px; padding:26px 22px;}
+  .market-card .n{font-family:var(--serif); font-weight:700; font-size:24px; color:var(--primary); margin-bottom:8px;}
+  .market-card h3{font-family:var(--serif); font-size:15.5px; margin-bottom:8px;}
+  .market-card p{font-size:12.5px; color:var(--muted); line-height:1.5;}
+
+  .ask-strip{background:var(--primary); border-radius:14px; padding:36px clamp(24px,5vw,48px); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;}
+  .ask-strip .label{font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#E8F5F0; margin-bottom:6px;}
+  .ask-strip .amt{font-family:var(--serif); font-weight:700; font-size:clamp(28px,4vw,38px); color:#fff;}
+  .ask-strip .desc{font-size:13px; color:#E8F5F0; max-width:360px;}
+
+  .contact-block{padding:80px 0 20px; text-align:center;}
+  .reach-label{font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#6FA5A8; margin-bottom:12px;}
+  .contact-toggle{background:none; border:1px solid var(--line); color:#EAF3F2; padding:12px 26px; border-radius:8px; font-size:14px; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:8px; font-family:inherit; transition:border-color .15s;}
+  .contact-toggle:hover{border-color:var(--accent);}
+  .contact-toggle .chev{transition:transform .2s ease;}
+  .contact-toggle.open .chev{transform:rotate(180deg);}
+  .contact-panel{max-height:0; overflow:hidden; transition:max-height .35s ease, opacity .3s ease, margin-top .3s ease; opacity:0; margin-top:0;}
+  .contact-panel.open{max-height:220px; opacity:1; margin-top:26px;}
+  .contact-panel .who{font-size:15px; color:#BFD9DA;}
+  .contact-panel .who strong{color:var(--accent);}
+  .contact-panel hr{border:none; border-top:1px solid var(--line); max-width:420px; margin:14px auto;}
+  .contact-panel .email{font-family:monospace; font-size:13.5px; color:var(--accent); margin-bottom:22px; display:block;}
+  .contact-btn-row{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+  .cbtn{display:inline-block; padding:12px 24px; border-radius:6px; font-size:13.5px; font-weight:700; text-decoration:none;}
+  .cbtn-solid{background:var(--accent); color:var(--dark);}
+  .cbtn-solid:hover{background:#0FE0AC;}
+  .cbtn-outline{border:1px solid var(--line); color:#EAF3F2;}
+  .cbtn-outline:hover{border-color:var(--accent); color:var(--accent);}
+
+  footer{border-top:1px solid var(--line); padding:44px 0 56px;}
+  footer .wrap{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px;}
+  footer .brand-line{font-size:13px; color:#9FC4C6; max-width:420px;}
+  footer .brand-line strong{color:#EAF3F2;}
+  footer .meta{font-size:12px; color:#5C8A8C; text-align:right;}
+  footer .confidential{margin-top:6px; font-size:10.5px; letter-spacing:1px; text-transform:uppercase; color:#4A7477;}
+
+  @media (max-width:820px){
+    .loop-track{flex-direction:column; align-items:stretch;}
+    .loop-arrow{transform:rotate(90deg); padding:4px 0; align-self:center;}
+    .ask-strip{flex-direction:column; align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="eyebrow-bar">
+    <div class="wrap">
+      <span class="eyebrow">A Circlio Technologies Initiative</span>
+      <a class="back" href="../">← Circlio Technologies</a>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="amb amb-1"></div>
+    <div class="wrap">
+      <h1>Turning near-expiry loss into <span>loyalty.</span></h1>
+      <p class="tagline">ExpirySmart™ — POS-first retail waste intelligence</p>
+      <p class="positioning">A retail waste-intelligence and loyalty platform that helps supermarkets reduce near-expiry losses, increase customer retention, and turn ordinary purchase data into <strong>consumption-cycle intelligence.</strong></p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#how">See how it works</a>
+        <a class="btn btn-ghost" href="mailto:kimanigeorge2010@gmail.com">Request the deck</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="loop-section" id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-eyebrow">The Solution</div>
+        <h2 class="section-title">The loop that closes the waste gap.</h2>
+        <p class="section-sub">No extra steps for the cashier or the customer — the loop runs on data retailers already generate.</p>
+      </div>
+      <div class="loop-track">
+        <div class="loop-step"><div class="num">1</div><div class="label">RECEIVE PURCHASE DATA</div><div class="desc">Ingested directly from the supermarket's POS system — no new hardware, no extra steps at checkout.</div></div>
+        <div class="loop-arrow">→</div>
+        <div class="loop-step"><div class="num">2</div><div class="label">IDENTIFY & CALCULATE EXPIRY</div><div class="desc">The expiry intelligence engine matches items to a product lifespan database and calculates an individual expiry timeline.</div></div>
+        <div class="loop-arrow">→</div>
+        <div class="loop-step"><div class="num">3</div><div class="label">SEND REMINDERS & REWARDS</div><div class="desc">Customers get timely, personalised reminders before products expire, paired with loyalty incentives to repurchase.</div></div>
+        <div class="loop-arrow">→</div>
+        <div class="loop-step"><div class="num">4</div><div class="label">DELIVER RETAILER ANALYTICS</div><div class="desc">Inventory, customer, and operational intelligence surface on the retailer dashboard in real time.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="thesis-card">
+        <p class="q">"What did the customer buy?" is the wrong question. ExpirySmart asks: "What will they need to buy again, and when?"</p>
+        <p class="a">Standard loyalty and CRM systems stop at the transaction. ExpirySmart closes the gap between inventory systems (what's in stock) and loyalty systems (what was bought) — a structural blind spot nobody else is covering.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-eyebrow">Market</div>
+        <h2 class="section-title">East Africa first, then the wider intelligence network.</h2>
+      </div>
+      <div class="market-grid">
+        <div class="market-card"><div class="n">01</div><h3>Initial Market — Kenya</h3><p>Highest formal supermarket density in East Africa, with a digitally active consumer base and established mobile payment infrastructure.</p></div>
+        <div class="market-card"><div class="n">02</div><h3>Expansion — East Africa</h3><p>Uganda, Tanzania, and Rwanda share comparable retail structures, with no competing consumption-cycle intelligence product currently operating in the region.</p></div>
+        <div class="market-card"><div class="n">03</div><h3>Long-Term Opportunity</h3><p>Becoming the intelligence layer connecting retail transactions, consumer behaviour, and waste reduction across Sub-Saharan Africa.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="ask-strip">
+        <div>
+          <div class="label">Seed Investment — Confidential</div>
+          <div class="amt">USD 250,000</div>
+          <p class="desc" style="margin-top:8px;">Milestone-gated in 3 tranches · 15–20% equity offered · funds the MVP build, pilot execution, and 18-month runway to Series A.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-block" id="contact">
+    <div class="reach-label">Reach the founder directly</div>
+    <button class="contact-toggle" id="contactToggle" aria-expanded="false" aria-controls="contactPanel">
+      Contact the founder <span class="chev">⌄</span>
+    </button>
+    <div class="contact-panel" id="contactPanel">
+      <p class="who"><strong>George Kimani</strong> — Founder &amp; CEO, Circlio Technologies Limited</p>
+      <hr>
+      <span class="email">kimanigeorge2010@gmail.com</span>
+      <div class="contact-btn-row">
+        <a class="cbtn cbtn-solid" href="mailto:kimanigeorge2010@gmail.com">Send an email</a>
+        <a class="cbtn cbtn-outline" href="https://www.linkedin.com/in/george-kimani-illustrator/" target="_blank" rel="noopener">Follow on LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p class="brand-line"><strong>ExpirySmart™</strong> is a retail waste-intelligence initiative developed by <strong>Circlio Technologies Limited</strong>, Nairobi, Kenya.</p>
+      <div class="meta">
+        kimanigeorge2010@gmail.com<br>
+        <span class="confidential">Investor material — confidential</span>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  const toggle = document.getElementById('contactToggle');
+  const panel = document.getElementById('contactPanel');
+  toggle.addEventListener('click', () => {
+    const isOpen = panel.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+</script>
+</body>
+</html>
